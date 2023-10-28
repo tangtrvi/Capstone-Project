@@ -10,3 +10,4 @@ class menu(models.Model):
     title = models.TextField(max_length=255)
     price = models.DecimalField(max_digits=10, decimal_places=2)
     inventory = models.SmallIntegerField(default=0)
+    
