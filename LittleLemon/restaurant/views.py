@@ -1,9 +1,10 @@
 from rest_framework.decorators import api_view
-from .models import menu
+from .models import menu, booking
 from rest_framework import generics
-from .serializers import MenuSerializer
+from rest_framework.viewsets import ModelViewSet 
+from .serializers import MenuSerializer, BookingSerializer
+from rest_framework import permissions
 
-# Create your views here. 
 class MenuItemsView(generics.ListCreateAPIView):
     queryset = menu.objects.all()
     serializer_class = MenuSerializer
@@ -11,3 +12,8 @@ class MenuItemsView(generics.ListCreateAPIView):
 class SingleMenuItemView(generics.RetrieveUpdateAPIView, generics.DestroyAPIView):
     queryset = menu.objects.all()
     serializer_class = MenuSerializer
+
+class BookingViewSet(ModelViewSet):
+    queryset = booking.objects.all()
+    serializer_class = BookingSerializer
+    permission_classes = [permissions.IsAuthenticated] 
