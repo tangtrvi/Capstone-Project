@@ -4,6 +4,10 @@ from rest_framework import generics
 from rest_framework.viewsets import ModelViewSet 
 from .serializers import MenuSerializer, BookingSerializer
 from rest_framework import permissions
+from django.shortcuts import render
+
+def index(request):
+    return render(request, 'index.html', {})
 
 class MenuItemsView(generics.ListCreateAPIView):
     queryset = menu.objects.all()
